@@ -1,0 +1,61 @@
+//Enter code here
+//Enter code here
+import java.util.*;
+import java.io.*;
+class Main{
+
+static long find(int n, long dp[]){
+    if(n == 0 || n==1){
+        return n;
+    }
+    if(n<0){
+        return 0;
+    }
+    if(dp[n] != -1){
+        return dp[n];
+    }
+    dp[n] = find(n-1,dp) + find(n-2,dp);
+    return dp[n];
+}
+
+ public static void main(String [] args){
+    FastReader input = new FastReader();
+    int n = input.nextInt();
+    long dp [] = new long [n+1];
+    for(int i =0;i<n+1;i++){
+        dp[i] = -1;
+    }
+    System.out.println(find(n,dp));
+   
+    }
+  
+    static class FastReader
+  {
+    BufferedReader br;
+    StringTokenizer st;
+    public FastReader()
+    {
+      br = new BufferedReader(new InputStreamReader(System.in));
+    }
+    String next()
+    {
+      while (st == null || !st.hasMoreElements()){
+        try { st = new StringTokenizer(br.readLine()); }
+        catch (IOException e) { e.printStackTrace(); }
+      }
+      return st.nextToken();
+    }
+    int nextInt() { return Integer.parseInt(next()); }
+    long nextLong() { return Long.parseLong(next()); }
+    double nextDouble(){ return Double.parseDouble(next()); }
+    String nextLine(){
+      String str = "";
+      try { str = br.readLine(); }
+      catch (IOException e) { e.printStackTrace(); }
+      return str;
+    }
+  }
+
+   
+  
+}
